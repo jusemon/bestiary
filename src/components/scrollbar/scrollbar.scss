@@ -9,7 +9,7 @@
   }
   .bar {
     height: 100%;
-    width: 26px;
+    width: 20px;
     right: 0px;
     display: block;
     position: absolute;
@@ -17,13 +17,13 @@
     background-color: #0F1E48;
     .bar-control{
       margin: 0 2px;
-      width: 18px;
+      width: 12px;
       height: calc(100% - 50px);
       border: 2px solid gray;
     }
     .bar-icon {
       color: #81B6B8;
-      font-size: 22px;
+      font-size: 1rem;
     }
     .bar-button {
       padding: 0 3px;
@@ -33,7 +33,7 @@
     .bar-scroll {
       background-color: #81B6B8;
       margin: 2px;
-      width: 11px;
+      width: 4px;
       height: 18px;
       position: relative;
     }
