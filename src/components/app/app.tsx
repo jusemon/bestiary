@@ -5,7 +5,7 @@ import { AppProps, AppState } from './types';
 import './app.scss';
 import { connect } from 'react-redux';
 import { fetchEnemiesIfNeeded } from '../enemies/actions';
-import circle from './circle.png';
+const circle = 'https://cdn.jsdelivr.net/gh/JSMontoya/bestiary@master/assets/images/circle.png';
 class App extends Component<AppProps, AppState> {
   componentDidMount() {
     this.props.dispatch(fetchEnemiesIfNeeded());
