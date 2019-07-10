@@ -5,7 +5,7 @@ import { AppProps, AppState } from './types';
 import './app.scss';
 import { connect } from 'react-redux';
 import { fetchEnemiesIfNeeded } from '../enemies/actions';
-
+import circle from '../../assets/images/circle.png';
 class App extends Component<AppProps, AppState> {
   componentDidMount() {
     this.props.dispatch(fetchEnemiesIfNeeded());
@@ -14,6 +14,7 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div className='app container'>
+        <img src={circle}></img>
         <nav className='panel'>
           <p className='panel-heading'>
             Enemies
