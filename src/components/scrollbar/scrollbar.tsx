@@ -29,7 +29,7 @@ export class Scrollbar extends Component<{}, { scroll: RefObject<HTMLDivElement>
   onMouseMove(e: MouseEvent<HTMLDivElement>) {
     if (this.pressed) {
       const element = this.state.container.current;
-      element.scroll({ behavior: 'auto', top: element.scrollTop + e.movementY * 125 })
+      element.scroll({ behavior: 'auto', top: element.scrollTop + e.movementY * 135 })
     }
   }
 
