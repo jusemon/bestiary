@@ -109,9 +109,9 @@ function fetchEnemies(): (dispatch: Dispatch<EnemiesActions, {}>, getState: () =
 }
 
 function shouldFetchEnemies(state: EnemiesState) {
-  if (localStorage.getItem('enemies')) {
-    return false;
-  }
+  // if (localStorage.getItem('enemies')) {
+  //   return false;
+  // }
   if (state.enemies.length === 0) {
     return true;
   } else if (state.isFetching) {
