@@ -104,14 +104,15 @@ function fetchEnemies(): (dispatch: Dispatch<EnemiesActions, {}>, getState: () =
       }
     });
     localStorage.setItem('enemies', JSON.stringify(enemies));
+    localStorage.setItem('version', Environment.VERSION);
     return dispatch(receiveEnemies(enemies));
   };
 }
 
 function shouldFetchEnemies(state: EnemiesState) {
-  // if (localStorage.getItem('enemies')) {
-  //   return false;
-  // }
+  if (localStorage.getItem('enemies') && localStorage.getItem('version') === Environment.VERSION) {
+    return false;
+  }
   if (state.enemies.length === 0) {
     return true;
   } else if (state.isFetching) {
