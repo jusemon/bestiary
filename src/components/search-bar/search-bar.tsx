@@ -18,10 +18,12 @@ class SearchBar extends React.Component<SearchBarProps, { value: string, searchT
 
   handleSearchChange(event: ChangeEvent<HTMLInputElement>) {
     this.setState({ value: event.target.value });
+    this.props.search(this.state.value, this.state.searchType as SearchType, this.props.enemies)
   }
 
   handleSearchTypeChange(event: ChangeEvent<HTMLSelectElement>) {
     this.setState({ searchType: event.target.value });
+    this.props.search(this.state.value, this.state.searchType as SearchType, this.props.enemies)
   }
 
   render() {
@@ -42,12 +44,6 @@ class SearchBar extends React.Component<SearchBarProps, { value: string, searchT
             <span className='icon is-left'>
               <i className='fas fa-search' aria-hidden='true'></i>
             </span>
-          </p>
-          <p className='control'>
-            <button className='button'
-              onClick={() => this.props.search(this.state.value, this.state.searchType as SearchType, this.props.enemies)}>
-              Search
-            </button>
           </p>
         </div>
       </div>
