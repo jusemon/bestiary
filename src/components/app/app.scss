@@ -7,6 +7,9 @@
     text-align: center;
     border-radius: 10px;
     border: 3px solid #BCBCC9;
-    border-top: 3px solid #BCBCC9;
+    &:first-child {
+      border-top: 3px solid #BCBCC9;
+    }
+    margin-bottom: 15px;
   }
 }

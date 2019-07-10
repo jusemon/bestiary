@@ -27,7 +27,7 @@ class SearchBar extends React.Component<SearchBarProps, { value: string, searchT
   render() {
     const options = Object.keys(SearchType).map(k => ({ text: k, value: (SearchType as any)[k] }));
     return (
-      <div className='panel-block no-flex'>
+      <div className='search-bar panel-block'>
         <div className='field has-addons'>
           <p className='control'>
             <span className='select'>

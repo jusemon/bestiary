@@ -1,3 +1,20 @@
-.panel-block.no-flex {
-  display: inherit;
+.search-bar {
+  &.panel-block {
+    display: inherit;
+  }
+  background-color: #000432;
+  border-color: #000432;
+
+  .input, .select select {
+    background-color: #000432;
+    border-color: #dbdbdb;
+    border-radius: 4px;
+    color: #ffffff;
+  }
 }
+
+::placeholder, :-ms-input-placeholder, ::-ms-input-placeholder {
+  color: red;
+  opacity: 1;
+}
+

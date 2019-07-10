@@ -1,4 +1,4 @@
-@import "~bulma/css/bulma.min.css";
+// @import "~bulma/sass/utilities/_all.sass";
 
 html {
   overflow: auto;
@@ -12,6 +12,10 @@ body {
   background: #3A4068;
   min-height: 100vh;
   padding: 5px;
+}
+
+body, button, input, select, textarea {
+  font-family: 'Saira Condensed', sans-serif;
 }
 
 code {
