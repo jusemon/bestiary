@@ -13,7 +13,7 @@ class App extends Component<AppProps, AppState> {
 
   render() {
     return (
-      <div className='container'>
+      <div className='app container'>
         <nav className='panel'>
           <p className='panel-heading'>
             Enemies

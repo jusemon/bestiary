@@ -1,9 +1,9 @@
 .scrollbar {
   position: relative;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 115px);
   .scrollbar-container {
     position: absolute;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 115px);
     overflow-y: scroll;
     width: 100%;
   }
