@@ -5,7 +5,7 @@ import { AppProps, AppState } from './types';
 import './app.scss';
 import { connect } from 'react-redux';
 import { fetchEnemiesIfNeeded } from '../enemies/actions';
-const circle = 'https://cdn.jsdelivr.net/gh/JSMontoya/bestiary@master/assets/images/circle.png';
+const circle = 'https://raw.githubusercontent.com/JSMontoya/bestiary/master/assets/images/circle.png';
 class App extends Component<AppProps, AppState> {
   componentDidMount() {
     this.props.dispatch(fetchEnemiesIfNeeded());
@@ -14,7 +14,7 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div className='app container'>
-        <img src={circle}></img>
+        <img className='animated-image' src={circle}></img>
         <nav className='panel'>
           <p className='panel-heading'>
             Enemies

@@ -12,4 +12,21 @@
     }
     margin-bottom: 15px;
   }
+  .animated-image{
+    width: 400px;
+    position: fixed;
+    left: -200px;
+    top: -200px;
+    animation: rotate 10s infinite;
+    animation-delay: 0s;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
