@@ -2,6 +2,7 @@
   .panel-heading{
     $colorCorners: #0B0A46;
     $colorCenter: #161877;
+    position: relative;
     background-image: linear-gradient($colorCenter, $colorCorners);
     color: white;
     text-align: center;
