@@ -14,7 +14,7 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div className='app container'>
-        <img className='animated-image' src={circle}></img>
+        <img className='animated-image' alt="Animated logo" src={circle}></img>
         <nav className='panel'>
           <p className='panel-heading'>
             Enemies

@@ -58,7 +58,7 @@ const mapStateToProps = (state: AppState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<SearchBarActions, {}>) =>
+const mapDispatchToProps = (dispatch: Dispatch<SearchBarActions>) =>
   ({
     search: (search: string, searchType: SearchType, enemies: Enemy[]) => dispatch(searchEnemies({ search, searchType, enemies }))
   });

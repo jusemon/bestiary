@@ -15,20 +15,24 @@ export class Scrollbar extends Component<{}, { scroll: RefObject<HTMLDivElement>
 
   componentDidUpdate() {
     const scroll = this.state.scroll.current;
-    scroll.style.top = `0px`;
+    if (scroll) {
+      scroll.style.top = `0px`;
+    }
   }
 
   onScroll(e: UIEvent<HTMLDivElement>) {
     const element = e.currentTarget;
     const scroll = this.state.scroll.current;
-    const availableSpace = scroll.parentElement.clientHeight - scroll.clientHeight;
-    const progress = (element.scrollTop / element.scrollHeight) * 100;
-    scroll.style.top = `${progress * availableSpace / 100}px`;
+    if (scroll && scroll.parentElement) {
+      const availableSpace = scroll.parentElement.clientHeight - scroll.clientHeight;
+      const progress = (element.scrollTop / element.scrollHeight) * 100;
+      scroll.style.top = `${progress * availableSpace / 100}px`;
+    }
   }
 
   onMouseMove(e: MouseEvent<HTMLDivElement>) {
-    if (this.pressed) {
-      const element = this.state.container.current;
+    const element = this.state.container.current;
+    if (this.pressed && element) {
       element.scroll({ behavior: 'auto', top: element.scrollTop + e.movementY * 135 })
     }
   }
