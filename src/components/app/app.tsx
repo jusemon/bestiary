@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { AppProps } from './types';
 import { fetchEnemiesIfNeeded } from '../enemies/actions';
@@ -14,7 +14,7 @@ const circle = tryRequire('../../assets/circle.png', Environment.CIRCLE);
 const App: FunctionComponent<AppProps> = ({ dispatch }) => {
   useEffect(() => {
     dispatch(fetchEnemiesIfNeeded());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app container">
