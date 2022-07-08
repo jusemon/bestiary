@@ -1,31 +1,38 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { AppProps, AppState } from './types';
+import { AppProps } from './types';
 import { fetchEnemiesIfNeeded } from '../enemies/actions';
 import SearchBar from '../search-bar/search-bar';
 import Results from '../results/results';
-import circle from '../../assets/circle.png'
 import './app.scss';
+import { Environment } from '../../environment';
 
-class App extends Component<AppProps, AppState> {
-  componentDidMount() {
-    this.props.dispatch(fetchEnemiesIfNeeded());
-  }
+const App: FunctionComponent<AppProps> = ({ dispatch }) => {
+  const [circle] = useState(() => {
+    // Workarround for StackBlitz
+    try {
+      return require('../../assets/circle.png');
+    } catch (err) {
+      return Environment.CIRCLE;
+    }
+  })
 
-  render() {
-    return (
-      <div className='app container'>
-        <img className='animated-image' alt="Animated logo" src={circle}></img>
-        <nav className='panel'>
-          <p className='panel-heading'>
-            Enemies
-          </p>
-          <SearchBar></SearchBar>
-          <Results></Results>
-        </nav>
-      </div >
-    );
-  }
+  useEffect(() => {
+    dispatch(fetchEnemiesIfNeeded());
+  }, []);
+
+  return (
+    <div className='app container'>
+      <img className='animated-image' alt="Animated logo" src={circle}></img>
+      <nav className='panel'>
+        <p className='panel-heading'>
+          Enemies
+        </p>
+        <SearchBar></SearchBar>
+        <Results></Results>
+      </nav>
+    </div >
+  );
 }
 
 export default connect()(App);
