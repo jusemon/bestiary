@@ -3,7 +3,6 @@ import { ResultsProps } from './types';
 import './results.scss';
 import ResultItem from '../result-item/result-item';
 import { AppState } from '../app/types';
-import { EnemiesState } from '../enemies/types';
 import { Enemy } from '../result-item/types';
 import { connect } from 'react-redux';
 import { SearchType } from '../search-bar/types';

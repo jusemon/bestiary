@@ -34,7 +34,7 @@ function receiveEnemiesIds(enemies: EnemyResult[]): EnemiesActions {
   };
 }
 
-function fetchEnemiesIds(): (dispatch: Dispatch<EnemiesActions, {}>) => Promise<EnemiesActions> {
+function fetchEnemiesIds(): (dispatch: Dispatch<EnemiesActions>) => Promise<EnemiesActions> {
   return async (dispatch) => {
     dispatch(requestEnemiesIds());
     const categories = ['Category:Bosses in Crisis Core -Final Fantasy VII-', 'Category:Enemies in Crisis Core -Final Fantasy VII-'];
@@ -64,7 +64,7 @@ async function fetchEnemiesIdsByCategory(url: URL, category: string): Promise<En
   return result;
 }
 
-function fetchEnemies(): (dispatch: Dispatch<EnemiesActions, {}>, getState: () => AppState) => Promise<EnemiesActions> {
+function fetchEnemies(): (dispatch: Dispatch<EnemiesActions>, getState: () => AppState) => Promise<EnemiesActions> {
   return async (dispatch, getState) => {
     dispatch(requestEnemies());
     const url = new URL(Environment.API);
@@ -90,7 +90,7 @@ function fetchEnemies(): (dispatch: Dispatch<EnemiesActions, {}>, getState: () =
     const results = result.map(i => JSON.parse(i.pageprops.infoboxes) as Data[]);
     results.forEach(infoboxes => {
       const info = infoboxes.flatMap(datas => datas.data);
-      const pic = (info.find(i => i.type === Types.Image) as DataTypeImage).data[0].url;
+      const pic = (info.find(i => i.type === Types.Image) as DataTypeImage).data[0].url.split('/').slice(0, -2).join('/');
       const itemsResult = recursiveValueSearch(info, 'items');
       const gameplayDetailsResult = recursiveValueSearch(info, 'Gameplay details');
       if (itemsResult && gameplayDetailsResult) {

@@ -1,9 +1,8 @@
-import React, { Component, UIEvent, MouseEvent, createRef, RefObject } from 'react';
+import React, { Component, UIEvent, MouseEvent, createRef, RefObject, ReactNode } from 'react';
 import './scrollbar.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { FaCaretUp, FaCaretDown } from 'react-icons/fa'
 
-export class Scrollbar extends Component<{}, { scroll: RefObject<HTMLDivElement>, container: RefObject<HTMLDivElement> }> {
+export class Scrollbar extends Component<{children: ReactNode}, { scroll: RefObject<HTMLDivElement>, container: RefObject<HTMLDivElement> }> {
   pressed: boolean = false;
   constructor(props: any) {
     super(props);
@@ -15,20 +14,24 @@ export class Scrollbar extends Component<{}, { scroll: RefObject<HTMLDivElement>
 
   componentDidUpdate() {
     const scroll = this.state.scroll.current;
-    scroll.style.top = `0px`;
+    if (scroll) {
+      scroll.style.top = `0px`;
+    }
   }
 
   onScroll(e: UIEvent<HTMLDivElement>) {
     const element = e.currentTarget;
     const scroll = this.state.scroll.current;
-    const availableSpace = scroll.parentElement.clientHeight - scroll.clientHeight;
-    const progress = (element.scrollTop / element.scrollHeight) * 100;
-    scroll.style.top = `${progress * availableSpace / 100}px`;
+    if (scroll && scroll.parentElement) {
+      const availableSpace = scroll.parentElement.clientHeight - scroll.clientHeight;
+      const progress = (element.scrollTop / element.scrollHeight) * 100;
+      scroll.style.top = `${progress * availableSpace / 100}px`;
+    }
   }
 
   onMouseMove(e: MouseEvent<HTMLDivElement>) {
-    if (this.pressed) {
-      const element = this.state.container.current;
+    const element = this.state.container.current;
+    if (this.pressed && element) {
       element.scroll({ behavior: 'auto', top: element.scrollTop + e.movementY * 135 })
     }
   }
@@ -45,13 +48,13 @@ export class Scrollbar extends Component<{}, { scroll: RefObject<HTMLDivElement>
         </div>
         <div className='bar'>
           <button className='bar-button'>
-            <FontAwesomeIcon className='bar-icon' icon={faCaretUp}></FontAwesomeIcon>
+            <FaCaretUp className='bar-icon'></FaCaretUp>
           </button>
           <div className='bar-control'>
             <div ref={this.state.scroll} onMouseDown={e => this.onMouseSwitch(e, true)} className='bar-scroll'></div>
           </div>
           <button className='bar-button'>
-            <FontAwesomeIcon className='bar-icon' icon={faCaretDown}></FontAwesomeIcon>
+            <FaCaretDown className='bar-icon'></FaCaretDown>
           </button>
         </div>
       </div>
