@@ -4,9 +4,9 @@ Crisis Core: Final Fantasy VII bestiary, it's integrated with the [Final Fantasy
 
 Allows to search by enemy or item name (droped and stealed items).
 
-A running version of the project could be found here: [Live Link](https://react-bestiary.jusemon.com/)
+A running version of the project could be found here: [Live Link](https://bestiary.jusemon.com/)
 
-A stackblitz version could be found here: [Stackblitz Link](https://stackblitz.com/edit/jusemon-react-bestiary)
+A stackblitz version could be found here: [Stackblitz Link](https://stackblitz.com/edit/bestiary)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
