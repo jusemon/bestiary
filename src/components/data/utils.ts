@@ -36,7 +36,7 @@ export function getGuid() {
 
 export function tryRequire(path: string, defaultValue: any = null) {
   try {
-    return require(path);
+    return require(`${path}`);
   } catch (err) {
     return defaultValue;
   }
