@@ -1,5 +1,8 @@
 import { DataTypeBase } from './types';
-export function recursiveValueSearch(list: DataTypeBase[], value: string): DataTypeBase[] | undefined {
+export function recursiveValueSearch(
+  list: DataTypeBase[],
+  value: string
+): DataTypeBase[] | undefined {
   for (const el of list) {
     if (Array.isArray(el.data) || !el.data.value) {
       continue;
@@ -25,8 +28,16 @@ export function clearHtml(value: string) {
 
 export function getGuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = Math.random() * 16 | 0,
-      v = c === 'x' ? r : ((r & 0x3) | 0x8);
+    var r = (Math.random() * 16) | 0,
+      v = c === 'x' ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
+}
+
+export function tryRequire(path: string, defaultValue: any = null) {
+  try {
+    return require(path);
+  } catch (err) {
+    return defaultValue;
+  }
 }
