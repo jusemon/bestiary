@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { AppProps, AppState } from './types';
+import { fetchEnemiesIfNeeded } from '../enemies/actions';
 import SearchBar from '../search-bar/search-bar';
 import Results from '../results/results';
-import { AppProps, AppState } from './types';
+import circle from '../../assets/circle.png'
 import './app.scss';
-import { connect } from 'react-redux';
-import { fetchEnemiesIfNeeded } from '../enemies/actions';
-const circle = 'https://raw.githubusercontent.com/JSMontoya/bestiary/master/assets/images/circle.png';
+
 class App extends Component<AppProps, AppState> {
   componentDidMount() {
     this.props.dispatch(fetchEnemiesIfNeeded());
@@ -14,7 +15,7 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div className='app container'>
-        <img className='animated-image' src={circle}></img>
+        <img className='animated-image' alt="Animated logo" src={circle}></img>
         <nav className='panel'>
           <p className='panel-heading'>
             Enemies
