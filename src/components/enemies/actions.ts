@@ -97,7 +97,7 @@ function fetchEnemies(): (dispatch: Dispatch<EnemiesActions>, getState: () => Ap
         const name = (info.find(i => i.type === Types.Title) as DataType).data.value;
         const items: Item[] = itemsResult.filter(i => i.type === Types.Data)
           .map(i => i.data as DataDetailed).map(d =>
-            ({ names: d.value.split('<br />').map(v => clearHtml(v)), type: d.source as ItemType }));
+            ({ names: d.value.replaceAll('<br />', '<br/>').split('<br/>').map(v => clearHtml(v)), type: d.source as ItemType }));
         const gameplayDetails = gameplayDetailsResult.filter(i => i.type === Types.Data)
           .map(i => i.data as DataDetailed).find(i => i.source === 'location') as DataDetailed;
         enemies.push({ name, pic, items, ubications: gameplayDetails ? gameplayDetails.value.split('<br />').map(v => clearHtml(v)) : [] });
