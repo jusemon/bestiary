@@ -8,7 +8,7 @@ export interface Item {
 export interface Enemy {
   name: string;
   pic: string;
-  ubications: string[];
+  locations: string[];
   items: Item[];
 }
 

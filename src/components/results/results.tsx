@@ -9,7 +9,6 @@ import { SearchType } from '../search-bar/types';
 import { Scrollbar } from '../scrollbar';
 
 class Results extends Component<ResultsProps> {
-
   shouldComponentUpdate(next: ResultsProps) {
     return next.enemies !== this.props.enemies;
   }
@@ -18,31 +17,45 @@ class Results extends Component<ResultsProps> {
     return (
       <div className='results'>
         <Scrollbar>
-          {this.props.enemies.filter((e, i)=>i<1000).map((e, i) => (
-            <ResultItem element={e} key={i} ></ResultItem>)
-          )}
+          {this.props.enemies
+            .filter((e, i) => i < 1000)
+            .map((e, i) => (
+              <ResultItem element={e} key={i}></ResultItem>
+            ))}
         </Scrollbar>
       </div>
     );
   }
 }
 
+const searchs: Record<
+  SearchType,
+  (search: string) => (enemy: Enemy) => boolean
+> = {
+  ENEMY: (search: string) => (enemy: Enemy) =>
+    enemy.name.toLowerCase().includes(search),
+  ITEM: (search: string) => (enemy: Enemy) =>
+    enemy.items.some((item) =>
+      item.names.some((name) =>
+        name
+          .toLowerCase()
+          .split(':')
+          [name.toLowerCase().split(':').length - 1].includes(search)
+      )
+    ),
+  LOCATION: (search: string) => (enemy: Enemy) =>
+    enemy.locations.some((item) => item.toLowerCase().includes(search)),
+};
+
 function mapStateToProps(state: AppState) {
   const { enemies, isFetching } = state.enemiesState || {
     isFetching: true,
-    enemies: [] as Enemy[]
+    enemies: [] as Enemy[],
   };
   const { searchType, search } = state.searchBarState;
   return {
-    enemies: searchType === SearchType.Enemy ? enemies.filter(e => e.name.toLowerCase().indexOf(search) > -1) :
-      enemies.filter(
-        e => e.items.some(
-          i => i.names.some(
-            n => n.toLowerCase().split(':')[n.toLowerCase().split(':').length - 1].indexOf(search) > -1
-          )
-        )
-      ),
-    isFetching
+    enemies: enemies.filter(searchs[searchType](search)),
+    isFetching,
   };
 }
 

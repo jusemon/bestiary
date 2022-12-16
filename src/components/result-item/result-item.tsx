@@ -31,10 +31,10 @@ const ResultItem: FunctionComponent<ResultItemProps> = (props) => {
             </div>
           </div>
           <div className='column is-half'>
-            <strong>Ubications: </strong>
+            <strong>Locations: </strong>
             <ul>
-              {props.element.ubications.map((ubication, i) => (
-                <li key={i}>{ubication}</li>
+              {props.element.locations.map((location, i) => (
+                <li key={i}>{location}</li>
               ))}
             </ul>
           </div>

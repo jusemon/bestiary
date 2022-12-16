@@ -2,7 +2,8 @@ import { Enemy } from '../result-item/types';
 
 export enum SearchType {
   Item = 'ITEM',
-  Enemy = 'ENEMY'
+  Enemy = 'ENEMY',
+  Location = 'LOCATION',
 }
 
 export interface SearchBarProps {

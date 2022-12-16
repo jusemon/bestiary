@@ -100,7 +100,7 @@ function fetchEnemies(): (dispatch: Dispatch<EnemiesActions>, getState: () => Ap
             ({ names: d.value.replaceAll('<br />', '<br/>').split('<br/>').map(v => clearHtml(v)), type: d.source as ItemType }));
         const gameplayDetails = gameplayDetailsResult.filter(i => i.type === Types.Data)
           .map(i => i.data as DataDetailed).find(i => i.source === 'location') as DataDetailed;
-        enemies.push({ name, pic, items, ubications: gameplayDetails ? gameplayDetails.value.replaceAll('<br />', '<br/>').split('<br/>').map(v => clearHtml(v)) : [] });
+        enemies.push({ name, pic, items, locations: gameplayDetails ? gameplayDetails.value.replaceAll('<br />', '<br/>').split('<br/>').map(v => clearHtml(v)) : [] });
       }
     });
     localStorage.setItem('enemies', JSON.stringify(enemies));
