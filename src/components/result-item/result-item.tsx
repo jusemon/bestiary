@@ -33,7 +33,7 @@ const ResultItem: FunctionComponent<ResultItemProps> = (props) => {
           <div className='column is-half'>
             <strong>Locations: </strong>
             <ul>
-              {props.element.locations.map((location, i) => (
+              {(props.element.locations || []).map((location, i) => (
                 <li key={i}>{location}</li>
               ))}
             </ul>
