@@ -11,13 +11,16 @@ jobs:
   build_and_preview:
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    env:
+      VITE_API: '${{ vars.VITE_API }}'
+      VITE_CIRCLE: '${{ vars.VITE_CIRCLE }}'
+      VITE_VERSION: '${{ vars.VITE_VERSION }}'
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && npm run build
+      - run: yarn install --frozen-lockfile && yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_LEARNING_3E5CE }}'
           projectId: react-learning-3e5ce
           channelId: 'live'
-
