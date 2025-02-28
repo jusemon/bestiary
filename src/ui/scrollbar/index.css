@@ -1,0 +1,47 @@
+.scrollbar {
+  position: relative;
+  height: calc(100vh - 145px);
+}
+
+.scrollbar .scrollbar-container {
+  position: absolute;
+  height: calc(100vh - 145px);
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.scrollbar .bar {
+  height: 100%;
+  width: 20px;
+  right: 0px;
+  display: block;
+  position: absolute;
+  border: 2px solid transparent;
+  background-color: #0F1E48;
+}
+
+.scrollbar .bar .bar-control {
+  margin: 0 2px;
+  width: 12px;
+  height: calc(100% - 50px);
+  border: 2px solid gray;
+}
+
+.scrollbar .bar .bar-icon {
+  color: #81B6B8;
+  font-size: 1rem;
+}
+
+.scrollbar .bar .bar-button {
+  padding: 0px;
+  background: transparent;
+  border: transparent;
+}
+
+.scrollbar .bar .bar-scroll {
+  background-color: #81B6B8;
+  margin: 2px;
+  width: 4px;
+  height: 18px;
+  position: relative;
+}

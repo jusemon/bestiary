@@ -41,3 +41,15 @@ export function tryRequire(path: string, defaultValue: any = null) {
     return defaultValue;
   }
 }
+
+/**
+ * Generic function to process items in batches
+ * @param items Array of items to process in batches
+ * @param batchSize Size of each batch
+ * @returns Generator that yields batches of items
+ */
+export function* batchItems<T>(items: T[], batchSize: number): Generator<T[]> {
+  for (let i = 0; i < items.length; i += batchSize) {
+    yield items.slice(i, i + batchSize);
+  }
+}
