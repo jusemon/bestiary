@@ -1,5 +1,3 @@
-@import "~bulma/css/bulma.min.css";
-
 html {
   overflow: auto;
 }
@@ -9,12 +7,16 @@ body {
   font-family: 'Saira Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #3A4068;
+  background: #3a4068;
   min-height: 100vh;
   padding: 5px;
 }
 
-body, button, input, select, textarea {
+body,
+button,
+input,
+select,
+textarea {
   font-family: 'Saira Condensed', sans-serif;
 }
 

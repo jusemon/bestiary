@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "react-bestiary-jsm",
-    "public": "build",
+    "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
 }

@@ -1,17 +1,13 @@
-import {
-  applyMiddleware,
-  createStore,
-  Store,
-  Middleware
-} from 'redux';
-import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
-import rootReducer from './components/app/reducer';
-import { AppState } from './components/app/types';
+import { configureStore } from '@reduxjs/toolkit';
+import enemiesReducer from './components/enemies/enemies.slice';
+import searchBarReducer from './components/search-bar/search-bar.slice';
 
-const middleware: Middleware[] = [thunk, createLogger()];
+export const store = configureStore({
+  reducer: {
+    enemies: enemiesReducer,
+    searchBar: searchBarReducer,
+  },
+});
 
-export default function configureStore(): Store<AppState, any> {
-  const store = createStore(rootReducer, undefined, applyMiddleware(...middleware));
-  return store;
-}
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

@@ -1,30 +1,40 @@
-import React, { FunctionComponent, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { AppProps } from './types';
-import { fetchEnemiesIfNeeded } from '../enemies/actions';
+import './app.css';
+
+import { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { fetchEnemiesIfNeeded } from '../enemies/enemies.slice';
 import SearchBar from '../search-bar/search-bar';
-import Results from '../results/results';
-import { Environment } from '../../environment';
+import { Results } from '../results';
 import { tryRequire } from '../data/utils';
-import './app.scss';
+import { config } from '../../config';
+import { Container, Panel, PanelHeading, AnimatedImage } from '../../ui';
+import { AppDispatch } from '../../store';
 
 // Workarround for StackBlitz
-const circle = tryRequire('../../assets/circle.png', Environment.CIRCLE);
+const circle = tryRequire('../../assets/circle.png', config.circle);
 
-const App: FunctionComponent<AppProps> = ({ dispatch }) => {
+const App = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     dispatch(fetchEnemiesIfNeeded());
   }, [dispatch]);
 
   return (
-    <div className="app container">
-      <img className="animated-image" alt="Animated logo" src={circle}></img>
-      <nav className="panel">
-        <p className="panel-heading">Enemies</p>
+    <Container>
+      <AnimatedImage alt='Animated logo' src={circle}></AnimatedImage>
+      <Panel>
+        <PanelHeading
+          style={{
+            borderTop: '3px solid #BCBCC9',
+          }}
+        >
+          Enemies
+        </PanelHeading>
         <SearchBar></SearchBar>
         <Results></Results>
-      </nav>
-    </div>
+      </Panel>
+    </Container>
   );
 };
 

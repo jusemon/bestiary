@@ -1,0 +1,41 @@
+.search-bar.panel-block {
+  display: inherit;
+  position: relative;
+}
+
+.search-bar {
+  background-color: #000432;
+  border-color: #000432;
+}
+
+.search-bar .input,
+.search-bar .select select {
+  background-color: #000432;
+  border-color: transparent;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.search-bar .input::-moz-placeholder,
+.search-bar .textarea::-moz-placeholder,
+.search-bar .select select::-moz-placeholder {
+  color: white;
+}
+
+.search-bar .input::-webkit-input-placeholder,
+.search-bar .textarea::-webkit-input-placeholder,
+.search-bar .select select::-webkit-input-placeholder {
+  color: white;
+}
+
+.search-bar .input:-moz-placeholder,
+.search-bar .textarea:-moz-placeholder,
+.search-bar .select select:-moz-placeholder {
+  color: white;
+}
+
+.search-bar .input:-ms-input-placeholder,
+.search-bar .textarea:-ms-input-placeholder,
+.search-bar .select select:-ms-input-placeholder {
+  color: white;
+}

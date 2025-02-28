@@ -1,0 +1,21 @@
+.app .panel-heading {
+  margin-bottom: 15px;
+}
+
+.app .panel-heading:first-child {
+  border-top: 3px solid #bcbcc9;
+}
+
+.app .panel-block {
+  padding: 0.5em 0.75em;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}

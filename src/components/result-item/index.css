@@ -1,0 +1,17 @@
+.result-item.panel-block {
+  color: white;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  box-shadow: inset 3px 3px 3px 0px rgba(255, 255, 255, 0.1),
+    inset 0px -3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.result-item.panel-block strong,
+.result-item.panel-block h4 {
+  color: white;
+}
+
+.result-item.panel-block:first-child {
+  border-top: none;
+}
